@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content %}
+  <h1>Listing for {{ title }}</h1>
+  
+    <div class="tree">
+    <strong>{{ title[:-1] }}</strong>
+    {{ lists }}
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ static_dir }}/javascripts/tipuesearch_set.js"></script>
+    <script type="text/javascript" src="/tipuesearch/tipuesearch_content.js"></script>
+    <script type="text/javascript" src="{{ static_dir }}/javascripts/tipuesearch.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <form action="{{ web_relroot }}/tipuesearch/search.html">
+    <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters" required>
+    <input type="button" id="tipue_search_button" onclick="this.form.submit();" value="Search">
+    <div style="clear: both;"></div>
+    </form>
+    <script>
+    $(document).ready(function() {
+         $('#tipue_search_input').tipuesearch();
+    });
+    </script>
+    <div id="tipue_search_content"></div>
+{% endblock %}
+
+ 
+
+ 

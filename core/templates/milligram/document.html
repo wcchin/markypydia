@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block toc %}
+    <div class="tree">
+    <strong>{{ title }}</strong>
+    {{ toc }}
+    </div>
+{% endblock %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  {{ content }}
+{% endblock %}
+
+ 

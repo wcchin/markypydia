@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>{{ wiki_name }}{% if title!='-' %} - {{ title }}{% endif %}</title>
+    {% block head %}
+    {% endblock %}
+    
+    <link rel="stylesheet" href="{{ static_dir }}/stylesheets/styles.css">
+    <link rel="stylesheet" href="{{ static_dir }}/stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="{{ static_dir }}/typicons/typicons.min.css">
+    <meta name="viewport" content="width=device-width" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="/"><span class="typcn typcn-pi"></span></a>{{ wiki_name }}</h1>
+        {% if title!='-' %} <p>{{ title }}</p>{% endif %}
+        
+        <br>
+        <small> Search </small>
+        <form action="{{ web_relroot }}/tipuesearch/search.html">
+        <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters" required>
+        <input type="button" id="tipue_search_button" onclick="this.form.submit();" value="Search">
+        </form>
+        <br>
+        {% block toc %}
+        {% endblock %}
+      </header>
+      <section>
+        {% block content %}
+        {% endblock %}
+      </section>          
+      <footer>
+        {% if generate_listing: %}
+        <a href="{{ listing_filename }}"><span class="typcn typcn-folder-open"></span>List page</a>
+        {% endif %}
+        <p><small>The project Markypydia is maintained by Benny Chin</small></p>
+        <p><small>Modified theme based on <a href="https://github.com/orderedlist/minimal" target="blank"> Minimal</a> - <a href="https://github.com/orderedlist" target="blank">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="{{ static_dir }}/javascripts/scale.fix.js"></script>
+  </body>
+</html>

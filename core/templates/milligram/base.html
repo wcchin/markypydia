@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>{{ wiki_name }}{% if title!='-' %} - {{ title }}{% endif %}</title>
+  {% block head %}
+  {% endblock %}
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="{{ static_dir }}/stylesheets/normalize.css">
+  <link rel="stylesheet" href="{{ static_dir }}/stylesheets/milligram.css">
+  <link rel="stylesheet" href="{{ static_dir }}/stylesheets/custom.css">
+  <link rel="stylesheet" href="{{ static_dir }}/typicons/typicons.min.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="{{ static_dir }}/images/favicon.png">
+
+</head>
+<body>
+    
+    <main class="wrapper">
+
+        <nav class="navigation">
+            <section class="container">
+                <a class="navigation-title" href="/">
+                    <span class="typcn typcn-pi"></span>
+                    &nbsp;
+                    <strong>{{ wiki_name }}</strong>
+                </a>
+                <ul class="navigation-list float-right">
+                    {% for p,u in pages: %}
+                    <li class="navigation-item">
+                        <a class="navigation-link" href="{{ u }}" > {{ p }} </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </nav>
+        <div class="container">
+        <div class="row" style="margin-top: 8%">
+            <div class="column column-33">
+                {% block toc %}
+                {% endblock %}
+                {% if generate_listing: %}
+                <a href="{{ listing_filename }}"><span class="typcn typcn-folder-open"></span>List of pages</a>
+                {% endif %}
+            </div>
+            <div class="column column-67">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+        </div>
+        <footer class="footer">
+            <section class="container">
+                <p><small>The project Markypydia is maintained by Benny Chin</small></p>
+                <p><small>Theme generated with ♥ from <a target="_blank" href="http://milligram.io/">Milligram frontend framework</a>.</small></p>
+            </section>
+        </footer>
+
+    </main>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
+ 

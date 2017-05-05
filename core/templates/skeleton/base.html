@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>{{ wiki_name }}{% if title!='-' %} - {{ title }}{% endif %}</title>
+  {% block head %}
+  {% endblock %}
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="{{ static_dir }}/stylesheets/normalize.css">
+  <link rel="stylesheet" href="{{ static_dir }}/stylesheets/skeleton.css">
+  <link rel="stylesheet" href="{{ static_dir }}/stylesheets/custom.css">
+  <link rel="stylesheet" href="{{ static_dir }}/typicons/typicons.min.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="{{ static_dir }}/images/favicon.png">
+
+</head>
+<body>
+  <div class="container">
+    <div class="row" style="margin-top: 3%">
+      <div class="four columns">
+        <h2><a href="/"><span class="typcn typcn-pi"></span></a>{{ wiki_name }}</h2>
+        {% if title!='-' %} <p>{{ title }}</p>{% endif %}
+        <br>
+        <small> Search </small>
+        <form action="{{ web_relroot }}/tipuesearch/search.html">
+        <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters" required>
+        <input type="button" id="tipue_search_button" onclick="this.form.submit();" value="Search" class="button-primary">
+        </form>
+        <br>
+        {% block toc %}
+        {% endblock %}
+        {% if not(pages is none): %} 
+        <div class="tree">
+        <strong>Pages</strong>
+        <ul>
+        {% for p,u in pages: %}
+        <li><a href="{{ u }}">{{ p }}</a></li>
+        {% endfor %}
+        </ul>
+        </div>
+        {% endif %}
+        {% if generate_listing: %}
+        <a href="{{ listing_filename }}"><span class="typcn typcn-folder-open"></span>List page</a>
+        {% endif %}
+      </div>
+      <div class="eight columns">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="two-thirds column">
+        <p><small>The project Markypydia is maintained by Benny Chin</small></p>
+        <p><small>Theme is build based on <a href="http://getskeleton.com/" target="blank">Skeleton</a></small></p>
+      </div>
+      <div class="one-third column">
+      </div>
+    </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
+ 

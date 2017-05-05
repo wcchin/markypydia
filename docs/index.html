@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>markypydia - Home</title>
+  
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../static/stylesheets/normalize.css">
+  <link rel="stylesheet" href="../static/stylesheets/milligram.css">
+  <link rel="stylesheet" href="../static/stylesheets/custom.css">
+  <link rel="stylesheet" href="../static/typicons/typicons.min.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="../static/images/favicon.png">
+
+</head>
+<body>
+    
+    <main class="wrapper">
+
+        <nav class="navigation">
+            <section class="container">
+                <a class="navigation-title" href="/">
+                    <span class="typcn typcn-pi"></span>
+                    &nbsp;
+                    <strong>markypydia</strong>
+                </a>
+                <ul class="navigation-list float-right">
+                    
+                    <li class="navigation-item">
+                        <a class="navigation-link" href="/index.html" > Home </a>
+                    </li>
+                    
+                </ul>
+            </section>
+        </nav>
+        <div class="container">
+        <div class="row" style="margin-top: 8%">
+            <div class="column column-33">
+                
+    <div class="tree">
+    <strong>Home</strong>
+    <div class="toc">
+<ul>
+<li><a href="#a-small-static-wiki-generator">A small static wiki generator.</a></li>
+<li><a href="#what-is-this">What is this</a></li>
+<li><a href="#templates-and-themes">Templates and themes</a></li>
+<li><a href="#condition-of-this-project-under-development">condition of this project: under development</a><ul>
+<li><a href="#todo">todo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </div>
+
+                
+                <a href="_list.html"><span class="typcn typcn-folder-open"></span>List of pages</a>
+                
+            </div>
+            <div class="column column-67">
+            
+  <h1>Home</h1>
+  <h1 id="a-small-static-wiki-generator">A small static wiki generator.</h1>
+<p>I am sure there are a lot's of static site generators (and quite a lot is in python). 
+And, this may be just "yet another static site generator". </p>
+<p>Actually I am not sure whether this is the case, or not.</p>
+<p>I am designing this for personal learning. But, I have also tried to make something different. </p>
+<p>Most of the static site generator intended for making a static blog, or maybe something like the CMS. 
+Others that are designed for softwares' documentation, or something that can be use as a manual.</p>
+<p>But, these are not suitable for a personal wiki.</p>
+<p>A personal wiki -- something that is like a personal knowledge storage for some notes about things that one learn. 
+I think, a personal wiki should be something like the wikipedia, which has tons of pages, and each page has one thing to be written down. 
+These pages could be (should be) unorganized, unstructured. Because knowledge is meant to be free in terms of formation. 
+All topics, all pages should be in a same level, and maybe some lists that recorded the related topics. 
+And a very long list, maybe sorted alphabetically, as the referencing list like the encyclopedia or dictionary, for searching topics.
+Besides, a simple search function for looking related words from the documents and pages sea should be included too. </p>
+<p>So, I made this Markypydia, which is designed to be the personal wiki I have just mentioned.</p>
+<h1 id="what-is-this">What is this</h1>
+<p>Markypydia is a static wiki generator, which takes the markdown wiki pages and convert it into html pages, and automatically generate the long lists as the reference list. 
+There are two types of pages, one is for the general purpose pages, e.g. index page, about page...
+The other type is for the wiki documents, which is about all types of topics, which will be put inside the "wiki" directory. 
+Markypydia will also "walk" down into each of the directories inside the wiki documents, and generate the wiki webpages for each of the wiki pages in the same directory structure. (using os.walk)</p>
+<h1 id="templates-and-themes">Templates and themes</h1>
+<p>I have designed or modified several theme for the use of the Markypydia, including one is modified from the orderedlist's minimal, one is build from the skeleton framework, and another is build from the milligram framework. </p>
+<p>The theme should have three main file, document.html, list.html, and a search.html. 
+document.html is for the wiki documents and main pages lookings; list.html is for the references list; search.html should be simple, is for the search result list. </p>
+<h1 id="condition-of-this-project-under-development">condition of this project: under development</h1>
+<p>Well, although it looks like this could work, there are a lots of things to do before it is useable. 
+It can now create the pages, but the links between pages is still needed to be "process". Now the links will be created automatically from the markdown. </p>
+<h2 id="todo">todo</h2>
+<ol>
+<li>add the function for searching the documents for internal references links, and make sure the links will find a page.</li>
+<li>maybe, try to automatically add reference links for those words that we have a matching documents in the wiki document sea.  </li>
+<li>add a "not created yet" page for those words that cannot match but has been mentioned, like wikipedia. </li>
+<li>add a shell script function, and create the install setup.py file.</li>
+<li>reset the default templates folders locations.</li>
+</ol>
+
+            </div>
+        </div>
+        </div>
+        <footer class="footer">
+            <section class="container">
+                <p><small>The project Markypydia is maintained by Benny Chin</small></p>
+                <p><small>Theme generated with ♥ from <a target="_blank" href="http://milligram.io/">Milligram frontend framework</a>.</small></p>
+            </section>
+        </footer>
+
+    </main>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
+ 
