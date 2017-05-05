@@ -42,9 +42,13 @@ class wiki():
             mpath = os.path.abspath(mpath)
         self.mpath = mpath
 
+        if 'base_url' in config:
+            self.base_url = config['base_url']
+        else:
+            self.base_url = ''
         self.pageDir = os.path.join(mpath, config['page_dir'])
         self.rootDir = os.path.join(mpath, config['wiki_dir'])
-        self.export_path = os.path.join(mpath, config['output_dir'])
+        self.export_path = os.path.join(mpath,  config['output_dir'], self.base_url)
         self.mdlist_wiki, self.exlist_wiki = self.get_docpath()
         self.mdlist_page, self.exlist_page = self.get_pagepath()
 
@@ -203,7 +207,7 @@ class wiki():
             if len(dirs)>0:
                 ml = ''
                 for d in dirs:
-                    ml = ml + '  <li><a href="%s/_list.html">%s/</a></li>\n'%(d,d)
+                    ml = ml + '  <li><a href="%s/%s">%s/</a></li>\n'%(d,lsn,d)
                 #ml = '<ul>\n'+ml+'\n</ul>\n'
                 liststr+=ml
 
@@ -225,9 +229,14 @@ class wiki():
                 if k not in list_dic:
                     list_dic.update({k:v})
 
-            static_rel = '../'
             webrelpath = name#os.path.relpath(name, wiki.export_path)
             rel_count = webrelpath.count('/')
+            if rel_count==0:
+                static_rel = './'
+            else:
+                static_rel = ''
+                for i in range(rel_count):
+                    static_rel+='../'
             for i in range(rel_count):
                 static_rel+='../'
             rel = webrelpath
@@ -261,11 +270,14 @@ class doc():
         self.text = ''
         self.templateLoader = wiki.templateLoader
 
-        static_rel = '../'
         webrelpath = os.path.relpath(outpath, wiki.export_path)
         rel_count = webrelpath.count('/')
-        for i in range(rel_count):
-            static_rel+='../'
+        if rel_count==0:
+            static_rel = './'
+        else:
+            static_rel = ''
+            for i in range(rel_count):
+                static_rel+='../'
         self.rel = webrelpath
         self.data.update(dict(static_dir=static_rel+'static'))
         self.data.update(dict(web_relroot=static_rel))
